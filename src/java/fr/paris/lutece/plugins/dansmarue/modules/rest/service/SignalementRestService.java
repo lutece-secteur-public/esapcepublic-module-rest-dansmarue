@@ -3161,6 +3161,7 @@ public class SignalementRestService implements ISignalementRestService
         int stateSignalement = workflowService.getState( idSignalement.intValue( ), Signalement.WORKFLOW_RESOURCE_TYPE, workflowId, null ).getId( );
 
         ActionFilter filter = new ActionFilter( );
+        filter.setAutomaticReflexiveAction( false );
         filter.setIdStateBefore( stateSignalement );
         filter.setIdStateAfter( AppPropertiesService.getPropertyInt( SignalementRestConstants.PROPERTY_ID_STATE_SERVICE_FAIT, -1 ) );
         List<Action> actions = _actionService.getListActionByFilter( filter );
